@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Domain.TbBooking>
+
+@{
+    ViewData["Title"] = "Index1";
+}
+
+<h1>Index1</h1>
+
+<p>
+    <a asp-action="BookCab">Book Cab</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CabId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TripId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduleDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduleTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CabId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TripId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScheduleDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScheduleTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+              @*  @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    <div>
+                        <a asp-action="RideCompleted">RideComplete</a>
+                    </div>
+                  @* <div class="form-group">
+                        <input type="submit" value="Ride completed" class="btn btn-secondary" />
+                    </div>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

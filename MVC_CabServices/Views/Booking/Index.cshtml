@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Domain.TbTripDetail>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TripDetailId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SourceAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DestinationAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Distance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalFare)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TripDetailId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SourceAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DestinationAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Distance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalFare)
+            </td>
+            <td>
+               @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,53 @@
+﻿@model MVC_CabServices.Models.UserLogin
+
+@{
+    ViewData["Title"] = "UserLogIn";
+}
+
+<h1>UserLogIn</h1>
+
+<script type="text/javascript">
+    function validateForm() {
+        var email = document.getElementById("email");
+        if (email.value == "") {
+            alert("Email must be filled out");
+            return false;
+        }
+        var password = document.getElementById("password");
+        if (password.value == "") {
+            alert("Password must be filled out");
+            return false;
+        }
+    }
+</script>
+
+<h4>UserLogin</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UserLogIn">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EmailId" class="control-label"></label>
+                <input asp-for="EmailId" id="email" class="form-control" type="email" />
+                <span asp-validation-for="EmailId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" id="password" class="form-control" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="login" class="btn btn-primary" onclick="return validateForm()" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ForgotPassword">Forgot Password</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
