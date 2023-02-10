@@ -1,0 +1,73 @@
+﻿@model Domain.TbTripDetail
+
+@{
+    ViewData["Title"] = "AddTrip";
+}
+
+<h1>AddTrip</h1>
+
+<h4>TbTripDetail</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddTrip">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           @* <div class="form-group">
+                <label asp-for="TripDetailId" class="control-label"></label>
+                <input asp-for="TripDetailId" class="form-control" />
+                <span asp-validation-for="TripDetailId" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="SourceAddress" class="control-label"></label>
+                <input asp-for="SourceAddress" class="form-control" />
+                <span asp-validation-for="SourceAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DestinationAddress" class="control-label"></label>
+                <input asp-for="DestinationAddress" class="form-control" />
+                <span asp-validation-for="DestinationAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Distance" class="control-label"></label>
+                <input asp-for="Distance" class="form-control" />
+                <span asp-validation-for="Distance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalFare" class="control-label"></label>
+                <input asp-for="TotalFare" class="form-control" />
+                <span asp-validation-for="TotalFare" class="text-danger"></span>
+            </div>
+           @* <div class="form-group">
+                <label asp-for="Createdate" class="control-label"></label>
+                <input asp-for="Createdate" class="form-control" />
+                <span asp-validation-for="Createdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Updatedate" class="control-label"></label>
+                <input asp-for="Updatedate" class="form-control" />
+                <span asp-validation-for="Updatedate" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Pincode" class="control-label"></label>
+                <input asp-for="Pincode" class="form-control" />
+                <span asp-validation-for="Pincode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Userid" class="control-label"></label>
+                <input asp-for="Userid" class="form-control" />
+                <span asp-validation-for="Userid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

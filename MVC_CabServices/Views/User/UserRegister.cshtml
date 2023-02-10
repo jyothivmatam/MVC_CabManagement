@@ -5,11 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>UserRegister</h1>
+@*<h1>UserRegister</h1>*@
 
 <script type="text/javascript">
     function validateForm() {
         var email = document.getElementById("email");
+        //var emailRegEx = /^(([^<>()[\]\\.,;:\s@@\"]+(\.[^<>()[\]\\.,;:\s@@\"]+)*)|(\".+\"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (email.value == "") {
             alert("Email must be filled out");
             return false;
@@ -34,6 +35,7 @@
             return false;
         }
         var pnum = document.getElementById("PhoneNum");
+        //var pnumRegEx = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
         if (pnum.value == "") {
             alert("PhoneNum must be filled out");
             return false;

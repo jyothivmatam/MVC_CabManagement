@@ -3,16 +3,19 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MVC_CabServices.Models;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 
 namespace MVC_CabServices.Controllers
 {
-    public class CabController : Controller
+    public class CabController : BaseController
     {
 
-       public readonly HttpClient client;
+        public readonly HttpClient client;
         private CrudStatus response;
+        private new const string Sessionkey = "token";
+        public new const string SessionId = "id";
 
-        public CabController() 
+        public CabController()
         {
 
             client = new HttpClient();
@@ -22,6 +25,9 @@ namespace MVC_CabServices.Controllers
         public ActionResult Index(int id)
         {
             IEnumerable<TbCab> cabs = null!;
+            string? token = HttpContext.Session.GetString(Sessionkey);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(scheme: "Bearer",
+                parameter: token);
             var responseTask = client.GetAsync("GetCabDetails");
             responseTask.Wait();
             var result = responseTask.Result;
@@ -52,11 +58,15 @@ namespace MVC_CabServices.Controllers
             try
             {
                 TbCab cabs = new TbCab();
+                string? token = HttpContext.Session.GetString(Sessionkey);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(scheme: "Bearer",
+                    parameter: token);
                 var postJob = client.PostAsJsonAsync<TbCab>("AddCabDetails", cab);
                 postJob.Wait();
                 var postResult = postJob.Result;
                 if (postResult.IsSuccessStatusCode)
                 {
+                    TempData["success"] = "New Cab Added Successfully";
                     return RedirectToAction("Index", "Cab");
                 }
                 ModelState.AddModelError(string.Empty, "server Error");
@@ -79,8 +89,10 @@ namespace MVC_CabServices.Controllers
         {
             try
             {
-                // TbCab cabs = new TbCab();
                 cab.Cabid = id;
+                string? token = HttpContext.Session.GetString(Sessionkey);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(scheme: "Bearer",
+                    parameter: token);
                 //cab.RegistrationNun=regNo;
                 var putTask = client.PutAsJsonAsync<TbCab>("UpdateCabDetails", cab);
                 putTask.Wait();
@@ -88,6 +100,7 @@ namespace MVC_CabServices.Controllers
                 var result = putTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
+                    TempData["success"] = "Cab Updated Successfully";
                     return RedirectToAction("Index");
                 }
                 return View(cab);
@@ -98,11 +111,29 @@ namespace MVC_CabServices.Controllers
 
             }
         }
-       public ActionResult Delete(int id)
+        public ActionResult Delete(int id)
         {
-            return View();
+            string? token = HttpContext.Session.GetString(Sessionkey);
+            CabDisplay cabs = null!;
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(scheme: "Bearer",
+                parameter: token);
+            var responseTask = client.GetAsync("GetCab?id=" + id);
+            responseTask.Wait();
+            var result = responseTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var readJob = result.Content.ReadFromJsonAsync<CabDisplay>();
+                readJob.Wait();
+                cabs = readJob.Result!;
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "server error");
+            }
+            return View(cabs);
         }
-       
+    
+
         // POST: CabController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -111,6 +142,9 @@ namespace MVC_CabServices.Controllers
             try
             {
                 cab.Cabid = id;
+                string? token = HttpContext.Session.GetString(Sessionkey);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(scheme: "Bearer",
+                    parameter: token);
                 var postJob = client.DeleteAsync("DeleteCab?id=" + id);
                 postJob.Wait();
                 var postResult = postJob.Result;
@@ -121,6 +155,7 @@ namespace MVC_CabServices.Controllers
                     if (response.Status == true)
                     {
                         ModelState.AddModelError(string.Empty, response.Message!);
+                        TempData["success"] = "Cab Removed Successfully";
                         return RedirectToAction("Index"/*, "Cab"*/);
                     }
                     else
@@ -136,6 +171,29 @@ namespace MVC_CabServices.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult GetCabById(int id, CabDisplay cab)
+        {
+            cab.Cabid = id;
+            string? token = HttpContext.Session.GetString(Sessionkey);
+            CabDisplay cabs = null!;
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(scheme: "Bearer",
+                parameter: token);
+            var responseTask = client.GetAsync("GetCab?id=" + id);
+            responseTask.Wait();
+            var result = responseTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var readJob = result.Content.ReadFromJsonAsync<CabDisplay>();
+                readJob.Wait();
+                cabs = readJob.Result!;
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "server error");
+            }
+            return View(cabs);
         }
     }
 }

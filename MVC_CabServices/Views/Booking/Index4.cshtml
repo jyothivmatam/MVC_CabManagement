@@ -1,35 +1,32 @@
-﻿@model IEnumerable<MVC_CabServices.Models.TbUserClass>
+﻿@model IEnumerable<MVC_CabServices.Models.CabDisplay>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Index4";
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
 
-@*<h1>Index</h1>*@
+<h1>Index4</h1>
 
 @*<p>
-    <a asp-action="ForgotPassword">forgi</a>
+    <a asp-action="Create">Create New</a>
 </p>*@
 <table class="table">
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.CabType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cabid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistrationNun)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.CabTypeId)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.UserId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmailId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserRoleId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CreateDate)
@@ -39,10 +36,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MobileNumber)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -50,22 +44,19 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.CabType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cabid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationNun)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CabTypeId)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmailId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserRoleId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreateDate)
@@ -77,9 +68,10 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MobileNumber)
+               @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
             </td>
-            
         </tr>
 }
     </tbody>

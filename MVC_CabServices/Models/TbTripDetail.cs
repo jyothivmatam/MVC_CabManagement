@@ -15,5 +15,12 @@ public partial class TbTripDetail
 
     public long? TotalFare { get; set; }
 
-   
+    public DateTime? Createdate { get; set; }
+
+    public DateTime? Updatedate { get; set; }
+
+    public int? Pincode { get; set; }
+
+    public int? Userid { get; set; }
+
 }

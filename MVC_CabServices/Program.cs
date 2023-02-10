@@ -1,7 +1,22 @@
+using Newtonsoft.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers();
+builder.Services.AddControllersWithViews().AddNewtonsoftJson
+    (options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore).AddNewtonsoftJson
+    (options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+builder.Services.AddMvc()
+.AddNewtonsoftJson(options =>
+       options.SerializerSettings.ContractResolver =
+          new CamelCasePropertyNamesContractResolver());
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(100);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
@@ -20,6 +35,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseSession();
 //app.MapRazorPages();
 
 app.MapControllerRoute(

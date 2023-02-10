@@ -1,0 +1,53 @@
+﻿@if (TempData["success"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["success"]');
+    </script>
+}
+
+@if (TempData["error"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    @* <h2> @TempData["error"]</h2>*@
+    <script type="text/javascript">
+        toastr.error('@TempData["success"]');
+    </script>
+}
+@*
+@if (TempData["success"]) == true)
+{
+   <script type="text/javascript">
+    function getSessionName(){
+    var name='<%=session.getAttribute("uname")%>';
+    alert(name);
+    }
+    </script>
+*@
+
+@*@{
+     if (TempData["CurrentTab"] != null)
+    {
+        @:alert('@(TempData["CurrentTab"])');
+    }
+}
+*@
+
+@*<% int id=request.getSession().getAttribute("UserId");%>
+<%input type="hidden" id="role" value=<%= role ;%> />
+*@
+@*<script>
+    function GetSession() {
+        <% int sessionkey = request.getSession().getAttribute("UserId");%>
+            <% input type = "hidden" sessionkey = "UserId" value = <%= UserId;%> />
+        var UserId = document.getElementById("UserId");;
+
+        if (TempData["CurrentTab"] != null)
+    {
+        alert('@(TempData["CurrentTab"])');
+    }
+    
+
+</script> *@

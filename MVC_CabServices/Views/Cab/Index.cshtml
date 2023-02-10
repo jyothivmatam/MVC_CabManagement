@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
 }
 
 <h1>Index</h1>
@@ -62,7 +63,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new {  id=item.Cabid }) |
-              @*  @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                    @Html.ActionLink("Details", "GetCabById", new {  id=item.Cabid  }) |
                     @Html.ActionLink("Delete", "Delete", new {  id=item.Cabid  })
 
                     @* @using (Html.BeginForm("Delete", "Cab", new { id = item.Cabid }, FormMethod.Post, new { onsubmit = "return confirm('Are u sure u want to delete this item?');" })) 

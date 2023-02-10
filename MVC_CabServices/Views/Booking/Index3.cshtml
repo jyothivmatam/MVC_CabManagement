@@ -1,15 +1,15 @@
-﻿@model IEnumerable<Domain.TbBooking>
+﻿@model IEnumerable<Domain.BookingView>
 
 @{
-    ViewData["Title"] = "Index1";
+    ViewData["Title"] = "Index3";
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
 
-<h1>Index1</h1>
+<h1>Index3</h1>
 
-<p>
-    <a asp-action="BookCab">Book Cab</a>
-</p>
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
 <table class="table">
     <thead>
         <tr>
@@ -17,13 +17,16 @@
                 @Html.DisplayNameFor(model => model.BookingId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CabId)
+                @Html.DisplayNameFor(model => model.FirstName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserId)
+                @Html.DisplayNameFor(model => model.LastName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TripId)
+                @Html.DisplayNameFor(model => model.RegistrationNun)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CabName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ScheduleDate)
@@ -32,13 +35,16 @@
                 @Html.DisplayNameFor(model => model.ScheduleTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreateDate)
+                @Html.DisplayNameFor(model => model.SourceAddress)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UpdateDate)
+                @Html.DisplayNameFor(model => model.DestinationAddress)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Status)
+                @Html.DisplayNameFor(model => model.Distance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalFare)
             </th>
             <th></th>
         </tr>
@@ -50,13 +56,16 @@
                 @Html.DisplayFor(modelItem => item.BookingId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CabId)
+                @Html.DisplayFor(modelItem => item.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UserId)
+                @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TripId)
+                @Html.DisplayFor(modelItem => item.RegistrationNun)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CabName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ScheduleDate)
@@ -65,24 +74,21 @@
                 @Html.DisplayFor(modelItem => item.ScheduleTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CreateDate)
+                @Html.DisplayFor(modelItem => item.SourceAddress)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UpdateDate)
+                @Html.DisplayFor(modelItem => item.DestinationAddress)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Status)
+                @Html.DisplayFor(modelItem => item.Distance)
             </td>
             <td>
-              @*  @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.DisplayFor(modelItem => item.TotalFare)
+            </td>
+            <td>
+               @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
-                    <div>
-                        <a asp-action="RideCompleted">RideComplete</a>
-                    </div>
-                  @* <div class="form-group">
-                        <input type="submit" value="Ride completed" class="btn btn-secondary" />
-                    </div>*@
             </td>
         </tr>
 }

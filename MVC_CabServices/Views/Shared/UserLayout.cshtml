@@ -1,18 +1,18 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MVC_CabServices</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
     <link rel="stylesheet" href="~/MVC_CabServices.styles.css" asp-append-version="true" />
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
 </head>
-<body background = "https://www.shutterstock.com/shutterstock/photos/1800668674/display_1500/stock-photo-taxi-services-mobile-app-website-application-on-smartphone-webpage-app-design-d-illustration-1800668674.jpg">>
-
+<body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid btn-warning">
@@ -23,27 +23,27 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                       @* <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">GetUsers</a>
-                        </li>*@
-                         <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="UserRegister">Register</a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="UserLogIn">Login</a>
                         </li>
-                       @* <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cab" asp-action="Index">CabDetails</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Booking" asp-action="Index4">AvailableCabs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Booking" asp-action="Index">TripDetails</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Trip" asp-action="Index">TripDetails</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Booking" asp-action="Index1">CabBooking</a>
@@ -53,7 +53,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Booking" asp-action="Index3">GetBookingView</a>
-                        </li>*@
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -77,3 +77,4 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+

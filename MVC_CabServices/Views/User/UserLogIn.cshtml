@@ -3,8 +3,20 @@
 @{
     ViewData["Title"] = "UserLogIn";
 }
-
-<h1>UserLogIn</h1>
+@{
+    try
+    {
+        if (TempData["message"] != null)
+        {
+            <script>swal("Oops!", "Incorrect UserId/Password!", "error");</script>
+        }
+    }
+    catch
+    {
+    }
+}
+@*
+<h1>UserLogIn</h1>*@
 
 <script type="text/javascript">
     function validateForm() {

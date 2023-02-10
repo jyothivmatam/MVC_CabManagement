@@ -2,13 +2,15 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
 }
 
 <h1>Index</h1>
 
-@*<p>
-    <a asp-action="Create">Create New</a>
-</p>*@
+
+<p>
+    <a asp-action="AddTrip">Add trip</a>
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -26,6 +28,18 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TotalFare)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Createdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Updatedate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pincode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Userid)
             </th>
             <th></th>
         </tr>
@@ -49,9 +63,21 @@
                 @Html.DisplayFor(modelItem => item.TotalFare)
             </td>
             <td>
-               @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                @Html.DisplayFor(modelItem => item.Createdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Updatedate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pincode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Userid)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.TripDetailId  }) |
+              @*  @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                @Html.ActionLink("Delete", "Delete", new {  id=item.TripDetailId  })
             </td>
         </tr>
 }
